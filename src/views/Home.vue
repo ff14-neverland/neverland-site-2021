@@ -1,35 +1,39 @@
 <template>
   <div class="home">
     <Header />
-    <div class="owl-carousel owl-nav-overlay owl-dots-overlay" data-owl-autoplay="true" data-owl-nav="true" data-owl-dots="true" data-owl-items="1">
-      <!-- Slider Item 1 -->
-      <div class="section-2xl bg-image" data-bg-src="../assets/carousel.jpg">
-        <div class="bg-black-06">
-          <div class="container text-center">
-            <h6 class="font-small font-weight-normal uppercase margin-bottom-20">Lifestyle, Fashion</h6>
-            <h1>Hero Post with Image</h1>
-            <a class="button button-lg button-radius button-border-2 button-reveal-right-outline-white margin-top-20" href="#"><i class="ti-arrow-right"></i><span>Read More</span></a>
-          </div>
-        </div>
-      </div>
-    </div><!-- end owl-carousel -->
+    <Banner />
+    <!-- section -->
+		<div id="first" class="section-lg">
+			<div class="container text-center">
+				<div class="margin-bottom-70">
+					<div class="row">
+						<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+							<h2>精選劇情</h2>
+
+						</div>
+					</div>
+				</div>
+			</div><!-- end container -->
+		</div>
+		<!-- end section -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Header from '@/components/Header.vue'
+import Banner from '@/components/Banner.vue'
 
 export default {
   name: 'Home',
   components:{
     Header,
-  },
-  mounted(){
-    $(".bg-image").each(function() {
-      var bgData = $(this).attr("data-bg-src");
-      $(this).css('background-image', 'url("' + bgData + '")');
-    });
+    Banner,
   },
 }
 </script>
+
+<style>
+.section-lg{
+  padding: 110px 0;
+}
+</style>

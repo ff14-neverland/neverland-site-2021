@@ -46,6 +46,9 @@
 </template>
 
 <style lang="scss">
+#nav{
+  padding-bottom: 0;
+}
 .nav-item{
   a{
     font-size: 1.1em;
