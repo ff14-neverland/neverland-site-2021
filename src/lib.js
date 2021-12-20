@@ -164,6 +164,16 @@ export default {
       })
       .then((result) => {
         const highlights = [];
+        for(let i = 0; i < result.length; i++){
+          const charaInfo = result[i]['chara_info'];
+          const highlightInfo = {
+            'id': charaInfo['ID'],
+            'name': charaInfo['post_title'],
+            'image': result[i]['chara_image'],
+            'highlightPost': result[i]['highlight_post'],
+          };
+          highlights.push(highlightInfo);
+        }
         resolve(highlights);
       })
       .catch(error => console.error(error));

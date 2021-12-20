@@ -3,15 +3,17 @@
     <div class="container text-center">
       <div class="margin-bottom-70">
         <div class="row">
-          <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <h2>精選劇情</h2>
+          <div class="highlight-wrapper">
+            <h2 class="section-title">精選劇情</h2>
             <swiper ref="charaSwiper" :options="swiperOptions">
               <swiper-slide v-for="chara in charas" :key="chara.id">
                  <router-link class="overlay-link" :to="{name:'chara', params: {id: chara.id}}">
-                   <img v-if="chara.image" :src="chara.image" alt=""/>
-                   <img v-else src="../assets/avatar.png">
-                   <div class="item-description">
-                     <h3 class="project-title">{{chara.title}}</h3>
+                   <div class="chara-wrapper">
+                     <img v-if="chara.image" :src="chara.image" alt=""/>
+                     <img v-else src="../assets/avatar.png">
+                     <div class="item-description">
+                       <h3 class="project-title">{{chara.name}}</h3>
+                     </div>
                    </div>
                  </router-link>
               </swiper-slide>
@@ -43,7 +45,6 @@ export default {
     return {
       posts: [],
       charas: [],
-      highlights: [],
       swiperOptions: {
         spaceBetween: 20,
         breakpoints: {
@@ -73,11 +74,42 @@ export default {
         categories: 4,
       };
       const highlightData = await lib.fetchHighlight(apiUrl, params);
+      this.charas = highlightData;
     },
   },
 }
 </script>
 
 <style lang="scss">
+.section-title{
+  margin-bottom: 50px;
+}
+.chara-wrapper{
+  display: flex;
+}
+.swiper-slide {
+  height: auto;
+  .overlay-link{
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: 0;
+    border: none;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    img{
+      overflow: hidden;
+      flex-basis: 50%;
+      height: 100%;
+      object-fit: cover;
+      background-color: white;
+      display: block;
+      margin-right: 30px;
+    }
+  }
+}
 
 </style>
