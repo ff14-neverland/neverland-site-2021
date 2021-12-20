@@ -64,7 +64,6 @@ export default {
     };
   },
   created(){
-    this.fetchCharas();
     this.fetchHighlights();
   },
   methods: {
@@ -74,16 +73,6 @@ export default {
         categories: 4,
       };
       const highlightData = await lib.fetchHighlight(apiUrl, params);
-    },
-    async fetchCharas(){
-      const apiUrl = `${process.env.VUE_APP_ENV_APP_URL}/wp-json/wp/v2/posts`;
-      const params = {
-        categories: 4,
-        per_page: 6,
-      };
-      const charasData = await lib.fetchCharas(apiUrl, params);
-      const charas = charasData.charas;
-      this.charas = charas;
     },
   },
 }
